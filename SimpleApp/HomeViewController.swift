@@ -7,6 +7,39 @@
 
 import UIKit
 
+enum Activity: CaseIterable {
+    case none
+    case low
+    case medium
+    case high
+    
+    var title: String {
+        switch self {
+        case .none:
+            return "None"
+        case .low:
+            return "Low"
+        case .medium:
+            return "Medium"
+        case .high:
+            return "High"
+        }
+    }
+    
+    var value: Int {
+        switch self {
+        case .none:
+            return 0
+        case .low:
+            return 50
+        case .medium:
+            return 150
+        case .high:
+            return 250
+        }
+    }
+}
+
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var sexSegmentControl: UISegmentedControl!
@@ -17,7 +50,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityField: UITextField!
     @IBOutlet weak var calculateButton: UIButton!
     let pickerView = UIPickerView()
-    let activities = ["None", "Low", "Medium", "High"]
+    let activities = Activity.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,18 +71,7 @@ class HomeViewController: UIViewController {
         let activityIndex = pickerView.selectedRow(inComponent: 0)
         let activity = activities[activityIndex]
 
-        var activityValue = 0
-        switch activity {
-        case "None":
-            activityValue = 0
-        case "Low":
-            activityValue = 50
-        case "Medium":
-            activityValue = 150
-        case "High":
-            activityValue = 250
-        default: break
-        }
+        let activityValue = activity.value
 
         let selectedSex = sexSegmentControl.selectedSegmentIndex
 
@@ -114,7 +136,7 @@ class HomeViewController: UIViewController {
     }
     
     func selectActivityByRow(row: Int) {
-        activityField.text = activities[row]
+        activityField.text = activities[row].title
     }
 }
 
@@ -139,7 +161,7 @@ extension HomeViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return activities[row]
+        return activities[row].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
