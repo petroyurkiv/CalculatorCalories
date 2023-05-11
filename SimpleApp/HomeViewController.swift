@@ -7,39 +7,6 @@
 
 import UIKit
 
-enum Activity: CaseIterable {
-    case none
-    case low
-    case medium
-    case high
-    
-    var title: String {
-        switch self {
-        case .none:
-            return "None"
-        case .low:
-            return "Low"
-        case .medium:
-            return "Medium"
-        case .high:
-            return "High"
-        }
-    }
-    
-    var value: Int {
-        switch self {
-        case .none:
-            return 0
-        case .low:
-            return 50
-        case .medium:
-            return 150
-        case .high:
-            return 250
-        }
-    }
-}
-
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var sexSegmentControl: UISegmentedControl!
@@ -73,16 +40,15 @@ class HomeViewController: UIViewController {
 
         let activityValue = activity.value
 
-        let selectedSex = sexSegmentControl.selectedSegmentIndex
+        guard let selectedSex = Sex(rawValue: sexSegmentControl.selectedSegmentIndex) else { return }
 
         switch selectedSex {
-        case 0:
+        case .male:
             let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
             showAlertWith(title: String(result))
-        case 1:
+        case .female:
             let result = Double(8 * weight) + (5.25 * Double(height)) - Double(5 * age) + 5.0 - 161.0 + Double(activityValue)
             showAlertWith(title: String(result))
-        default: ()
         }
     }
         
@@ -112,8 +78,8 @@ class HomeViewController: UIViewController {
 
     func configureSexSegmentControl() {
         sexSegmentControl.removeAllSegments()
-        sexSegmentControl.insertSegment(withTitle: "Male", at: 0, animated: false)
-        sexSegmentControl.insertSegment(withTitle: "Female", at: 1, animated: false)
+        sexSegmentControl.insertSegment(withTitle: Sex.male.title, at: 0, animated: false)
+        sexSegmentControl.insertSegment(withTitle: Sex.female.title, at: 1, animated: false)
         sexSegmentControl.selectedSegmentIndex = 0
     }
     
