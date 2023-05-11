@@ -25,6 +25,9 @@
                                             <segment title="First"/>
                                             <segment title="Second"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="sexControlDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="cCY-Zx-Ncx"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7ng-Wi-0Bi">
                                         <rect key="frame" x="0.0" y="55" width="358" height="70"/>
@@ -151,7 +154,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Calculate"/>
                                                 <connections>
-                                                    <action selector="calculateDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1uS-57-SOW"/>
+                                                    <action selector="calculateDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4sY-oU-YgK"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50k-Tk-pOu">
@@ -159,7 +162,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Clear"/>
                                                 <connections>
-                                                    <action selector="clearDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V6r-fp-4wD"/>
+                                                    <action selector="clearDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SSX-sm-ZXT"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -196,7 +199,7 @@
                     <connections>
                         <outlet property="activityField" destination="UgD-gg-uis" id="NnN-UI-EaS"/>
                         <outlet property="ageField" destination="fkP-ty-Hoe" id="92F-yX-QAi"/>
-                        <outlet property="calculateButton" destination="7xF-BX-IK9" id="9Z4-BL-uUW"/>
+                        <outlet property="calculateButton" destination="7xF-BX-IK9" id="359-Zk-cNV"/>
                         <outlet property="heightField" destination="EpX-hw-178" id="xE2-f3-WyW"/>
                         <outlet property="sexSegmentControl" destination="iri-5v-j1A" id="evs-Yz-Ybt"/>
                         <outlet property="weightField" destination="aja-7a-Q2m" id="eoG-Vc-0vQ"/>
